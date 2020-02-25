@@ -16,11 +16,7 @@
     yum: pkg='wget' state=installed
 
   - name: install jdk 7
-    yum: pkg='openjdk-7-jdk' state=installed
-    sudo: true
-
-  - name: set JDK 7 as a default alternative
-    command: update-java-alternatives --set java-1.7.0-openjdk-i386
+    yum: pkg='java-1.8.0-openjdk' state=installed
     sudo: true
 
   - name: create "nexus" group
