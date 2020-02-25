@@ -8,15 +8,15 @@
 
   tasks:
 
-  - name: update apt
-    apt: update_cache=yes cache_valid_time=3600
+  - name: update yum
+    yum: update_cache=yes cache_valid_time=3600
     sudo: true
 
   - name: install wget
-    apt: pkg='wget' state=installed
+    yum: pkg='wget' state=installed
 
   - name: install jdk 7
-    apt: pkg='openjdk-7-jdk' state=installed
+    yum: pkg='openjdk-7-jdk' state=installed
     sudo: true
 
   - name: set JDK 7 as a default alternative
