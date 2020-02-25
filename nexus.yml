@@ -53,7 +53,7 @@
     
 
   - name: make nexus runned by "nexus" user
-    lineinfile: dest={{nexus_dir}}/bin/nexus regexp="#RUN_AS_USER=" line="RUN_AS_USER=nexus" backrefs=true
+    lineinfile: dest={{nexus_dir}}/bin/nexus regexp="#run_as_user=" line="run_as_user=nexus" backrefs=true
     
 
   - name: set NEXUS_HOME
@@ -71,10 +71,8 @@
   - name: create symbolic links to /etc/init.d/nexus
     file: src={{nexus_dir}}/bin/nexus dest=/etc/init.d/nexus state=link
     
-
-  - name: set nexus working directory
-    lineinfile: dest={{nexus_dir}}/conf/nexus.properties regexp="^nexus-work=" line="nexus-work=${bundleBasedir}/work/nexus"
-    
+  - name: configure runlevel links for nexus
+    command: update-rc.d nexus defaults
 
   - name: start nexus
     service: name=nexus state=started pattern={{nexus_dir}}
