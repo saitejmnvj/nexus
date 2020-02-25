@@ -70,9 +70,6 @@
 
   - name: create symbolic links to /etc/init.d/nexus
     file: src={{nexus_dir}}/bin/nexus dest=/etc/init.d/nexus state=link
-    
-  - name: configure runlevel links for nexus
-    command: update-rc.d nexus defaults
 
   - name: start nexus
     service: name=nexus state=started pattern={{nexus_dir}}
