@@ -8,10 +8,6 @@
 
   tasks:
 
-  - name: update yum
-    yum: update_cache=yes cache_valid_time=3600
-    sudo: true
-
   - name: install wget
     yum: pkg='wget' state=installed
 
