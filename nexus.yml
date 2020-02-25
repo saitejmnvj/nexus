@@ -1,4 +1,4 @@
-- hosts: nexus
+- hosts: node1
   vars:
     nexus_version: 2.7.0  
     nexus_download_url: http://www.sonatype.org/downloads/nexus-{{nexus_version}}-bundle.tar.gz
