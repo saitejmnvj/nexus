@@ -72,10 +72,6 @@
     file: src={{nexus_dir}}/bin/nexus dest=/etc/init.d/nexus state=link
     
 
-  - name: configure runlevel links for nexus
-    command: update-rc.d nexus defaults
-    
-
   - name: set nexus working directory
     lineinfile: dest={{nexus_dir}}/conf/nexus.properties regexp="^nexus-work=" line="nexus-work=${bundleBasedir}/work/nexus"
     
