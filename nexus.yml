@@ -53,7 +53,7 @@
     
 
   - name: make nexus runned by "nexus" user
-    lineinfile: dest={{nexus_dir}}/bin/nexus/nexus.rc regexp="#run_as_user=" line="run_as_user=nexus" backrefs=true
+    lineinfile: dest={{nexus_dir}}/bin/nexus.rc regexp="#run_as_user=" line="run_as_user=nexus" backrefs=true
     
 
   - name: set NEXUS_HOME
