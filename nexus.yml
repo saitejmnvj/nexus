@@ -1,4 +1,6 @@
+---
 - hosts: node1
+  become: true
   vars:
     nexus_version: 2.7.0  
     nexus_download_url: http://www.sonatype.org/downloads/nexus-{{nexus_version}}-bundle.tar.gz
@@ -13,7 +15,6 @@
 
   - name: install jdk 7
     yum: pkg='java-1.8.0-openjdk' state=installed
-    sudo: true
 
   - name: create "nexus" group
     group: name=nexus 
