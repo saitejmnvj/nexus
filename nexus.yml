@@ -30,22 +30,17 @@
 
   - name: create {{nexus_extracted_dir}} directory
     file: path={{nexus_extracted_dir}} state=directory
-    when: nexus_download.changed
-   
 
   - name: extract nexus to {{nexus_extracted_dir}}
     command: tar xzf {{nexus_download_dest}} -C {{nexus_extracted_dir}} --strip-components=1
-    when: nexus_download.changed
     
 
   - name: move nexus to {{nexus_dir}} directory
     command: cp -a {{nexus_extracted_dir}}/. {{nexus_dir}}
-    when: nexus_download.changed
     
 
   - name: remove {{nexus_extracted_dir}} directory
     command: rm -rf {{nexus_extracted_dir}}
-    when: nexus_download.changed
     
 
   - name: make {{nexus_dir}} directory property of "nexus" user/group
