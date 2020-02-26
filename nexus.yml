@@ -68,11 +68,11 @@
     lineinfile: dest={{nexus_dir}}/bin/nexus regexp="^#PIDDIR=" line="PIDDIR=/var/run/nexus" backrefs=true
     
   - name: Change file ownership, group and permissions
-  file:
-    path: {{nexus_dir}}
-    owner: nexus
-    group: nexus
-    mode: '1777'
+    file:
+     path: {{nexus_dir}}
+     owner: nexus
+     group: nexus
+     mode: '1777'
    
 
   - name: create symbolic links to /etc/init.d/nexus
