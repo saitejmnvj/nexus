@@ -63,15 +63,11 @@
     changed_when: false
     register: password
     
-  - name: Print Jenkins Initial Password
-    debug:
-    var: pass=password.stdout
-      
   - name: Posting Password
     uri:
       url: "http://localhost:8081/service/siesta/rest/v1/script//run"
       user: 'admin'
-      password: pass
+      password: {{password}}
       headers:
         Content-Type: "text/plain"
       method: POST
