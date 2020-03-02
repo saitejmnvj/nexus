@@ -59,7 +59,7 @@
     service: name=nexus state=started pattern={{nexus_dir}}
   
   - name: Copying Creds
-    shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+    shell: cat /app/sonatype-work/nexus3/admin.password
     changed_when: false
     register: {{password}}
   - name: Posting Password
