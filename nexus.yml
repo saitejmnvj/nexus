@@ -61,13 +61,13 @@
   - name: Copying Creds
     shell: cat /app/sonatype-work/nexus3/admin.password
     changed_when: false
-    register: password
+    register: nexus_password
     
   - name: Posting Password
     uri:
       url: "http://localhost:8081/service/siesta/rest/v1/script//run"
       user: 'admin'
-      password: {{password}}
+      password: {{nexus_password}}
       headers:
         Content-Type: "text/plain"
       method: POST
