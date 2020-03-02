@@ -62,9 +62,10 @@
     shell: cat /app/sonatype-work/nexus3/admin.password
     changed_when: false
     register: password
+    
+  - name: Print Jenkins Initial Password
     debug:
-      var:
-      pass: password.stdout
+    var: pass=password.stdout
       
   - name: Posting Password
     uri:
