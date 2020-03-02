@@ -57,4 +57,20 @@
 
   - name: start nexus
     service: name=nexus state=started pattern={{nexus_dir}}
+  
+  - name: Copying Creds
+    shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+    changed_when: false
+    register: {{password}}
+  - name: Posting Password
+    uri:
+      url: "http://localhost:8081/service/siesta/rest/v1/script//run"
+      user: 'admin'
+      password: {{password}}
+      headers:
+        Content-Type: "text/plain"
+      method: POST
+      status_code: 200,204
+      force_basic_auth: yes
+      body: ""
     
