@@ -64,7 +64,8 @@
     register: password
     debug:
       var:
-      pass: password
+      pass: password.stdout
+      
   - name: Posting Password
     uri:
       url: "http://localhost:8081/service/siesta/rest/v1/script//run"
