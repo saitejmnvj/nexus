@@ -7,7 +7,7 @@
     nexus_download_dest: /tmp/nexus-{{nexus_version}}-bundle.tar.gz
     nexus_extracted_dir: /tmp/nexus_extracted_dir
     nexus_dir: /usr/local
-    nexus_admin_password:
+    nexus_admin_password: thegreat
     nexus_data_dir: /usr/local
     nexus_api_scheme: http
     nexus_api_hostname: 54.158.188.114
