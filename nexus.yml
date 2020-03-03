@@ -69,8 +69,7 @@
   
   - name: Access scripts API endpoint with defined admin password
     uri:
-     url: "{{ nexus_api_scheme }}://{{ nexus_api_hostname }}:{{ nexus_api_port }}\
-      {{ nexus_api_context_path }}{{ nexus_rest_api_endpoint }}"
+     url: "{{ nexus_api_scheme }}://{{ nexus_api_hostname }}:{{ nexus_api_port }}\{{ nexus_api_context_path }}{{ nexus_rest_api_endpoint }}"
       method: 'HEAD'
       user: 'admin'
       password: "{{ nexus_admin_password }}"
