@@ -63,9 +63,9 @@
   - name: start nexus
     service: name=nexus state=started pattern={{nexus_dir}}
   
-  - name: Get rest API endpoint (v < 3.8.0)
+  - name: Get rest API endpoint (v >= 3.8.0)
     set_fact:
-     nexus_rest_api_endpoint: "service/siesta/rest/v1/script"
+     nexus_rest_api_endpoint: "service/rest/v1/script"
   
   - name: Access scripts API endpoint with defined admin password
     uri:
