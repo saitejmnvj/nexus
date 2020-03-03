@@ -10,7 +10,7 @@
     nexus_admin_password:
     nexus_data_dir: /usr/local
     nexus_api_scheme: http
-    nexus_api_hostname: 3.92.221.134
+    nexus_api_hostname: localhost
     nexus_api_port: 8081
     nexus_api_context_path: '/'
   tasks:
