@@ -12,7 +12,7 @@
       force_basic_auth: yes
       body: "{{ args | to_json }}"
     register: script_run
-    failed_when: script_run | nexus_groovy_error | bool
+    
     
 
   - name: Details about runned script if verbose mode is on
