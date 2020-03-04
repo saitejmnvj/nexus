@@ -143,6 +143,7 @@
   - git:
       repo: https://github.com/haaryrichardt/nexus.git
       dest: "{{ nexus_git_repo }}"
+      update: yes
     
   - name: Archive scripts
     become: no
