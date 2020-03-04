@@ -61,7 +61,9 @@
     file: src={{nexus_dir}}/bin/nexus dest=/etc/init.d/nexus state=link
 
   - name: start nexus
-    service: name=nexus state=started
+    become: yes
+    shell:
+      cmd: service nexus start
   
   - name: Get rest API endpoint (v >= 3.8.0)
     set_fact:
