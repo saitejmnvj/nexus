@@ -152,7 +152,7 @@
       update: yes
   - name: Copy file 
     copy:
-      src: "{{ nexus_git_repo }}/files/groovy/update_admin_password.groovy"
+      src: "{{ nexus_git_repo }}/files/groovy/*.groovy"
       dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
       owner: nexus
       group: nexus
