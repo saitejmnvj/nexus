@@ -138,7 +138,15 @@
     set_fact:
       current_nexus_admin_password: "{{ nexus_default_admin_password }}"
     when: (nexus_api_head_with_default_password.status | default(false)) == 200
-
+    
+  - name: Archive scripts
+    become: no
+    archive:
+     path: "{{ role_path }}/files/groovy/*"
+     dest: "/tmp/nexus-upload-groovy-scripts.tar.gz"
+    run_once: true
+    delegate_to: localhost
+    
   - name: Upload new scripts
     unarchive:
       src: "/tmp/nexus-upload-groovy-scripts.tar.gz"
