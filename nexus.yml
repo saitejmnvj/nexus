@@ -161,6 +161,7 @@
     unarchive:
       src: "{{ nexus_dir }}/mygroovy.tar.gz"
       dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
+      remote_src: yes
 
   - name: Declare new or changed groovy scripts in nexus
     include_tasks: declare_script_each.yml
