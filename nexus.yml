@@ -150,14 +150,15 @@
       repo: https://github.com/haaryrichardt/nexus.git
       dest: "{{ nexus_git_repo }}"
       update: yes
-  - name: Copy file 
+  - name: Copy file Update Admin Password
     copy:
-      src: "{{ nexus_git_repo }}/files/groovy/*.groovy"
+      src: "{{ nexus_git_repo }}/files/groovy/update_admin_password.groovy"
       dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
       owner: nexus
       group: nexus
       mode: '1777' 
       remote_src: yes
+     
 #   - name: Archive scripts
 #     become: no
 #     archive:
