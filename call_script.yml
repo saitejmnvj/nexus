@@ -1,6 +1,6 @@
 ---
 
-  - name: Calling Groovy script update_admin_password
+  - name: Calling Groovy script 
     uri:
       url: "{{ nexus_api_scheme }}://{{ nexus_api_hostname }}:{{ nexus_api_port }}\
             {{ nexus_api_context_path }}{{ nexus_rest_api_endpoint }}/{{ script_name }}/run"
