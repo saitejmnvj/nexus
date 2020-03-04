@@ -156,7 +156,8 @@
       dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
       owner: nexus
       group: nexus
-      mode: '1777'    
+      mode: '1777' 
+      remote_src: yes
 #   - name: Archive scripts
 #     become: no
 #     archive:
