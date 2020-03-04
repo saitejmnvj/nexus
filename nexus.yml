@@ -61,7 +61,7 @@
     file: src={{nexus_dir}}/bin/nexus dest=/etc/init.d/nexus state=link
 
   - name: start nexus
-    service: name=nexus state=started pattern={{nexus_dir}}/bin
+    service: name=nexus state=started pattern={{nexus_dir}}/bin/nexus
   
   - name: Get rest API endpoint (v >= 3.8.0)
     set_fact:
