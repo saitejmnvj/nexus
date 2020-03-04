@@ -153,7 +153,7 @@
         vars:
           script_name: "update_admin_password" 
           args:
-            new_password:  nexus_admin_password 
+            new_password: "{{ nexus_admin_password }}" 
 
       - name: Admin password changed
         set_fact:
