@@ -152,13 +152,14 @@
     become: no
     archive:
      path: "{{ nexus_git_repo }}/files/groovy/update_admin_password.groovy"
-     dest: "{{ nexus_dir }}"
+     dest: "{{ nexus_dir }}/mygroovy.tar.gz"
+     format: gz
     run_once: true
-    delegate_to: localhost
+    
     
   - name: Upload new scripts
     unarchive:
-      src: "{{ nexus_dir }}/nexus-upload-groovy-scripts.tar.gz"
+      src: "{{ nexus_dir }}/mygroovy.tar.gz"
       dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
 
   - name: Declare new or changed groovy scripts in nexus
