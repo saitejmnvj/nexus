@@ -110,6 +110,10 @@
     changed_when: false
     register: init_password
     
+  - name: print password
+    debug:
+      vars: init_password.stdout
+      
   - name: Store password
     set_fact:
       nexus_default_admin_password: "{{ init_password.stdout }}"
