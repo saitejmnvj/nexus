@@ -128,14 +128,14 @@
       current_nexus_admin_password: "{{ nexus_default_admin_password }}"
     when: (nexus_api_head_with_default_password.status | default(false)) == 200
 
-  - name: Upload new scripts
-    unarchive:
-      src: "/tmp/nexus-upload-groovy-scripts.tar.gz"
-      dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
+#   - name: Upload new scripts
+#     unarchive:
+#       src: "/tmp/nexus-upload-groovy-scripts.tar.gz"
+#       dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
 
-  - name: Declare new or changed groovy scripts in nexus
-    include_tasks: declare_script_each.yml
-    with_items: "{{ nexus_groovy_files_changed.stdout_lines }}"
+#   - name: Declare new or changed groovy scripts in nexus
+#     include_tasks: declare_script_each.yml
+#     with_items: "{{ nexus_groovy_files_changed.stdout_lines }}"
 
   - name: Change admin password if we are still using default
     block:
