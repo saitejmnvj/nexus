@@ -104,8 +104,9 @@
 #   - name: Set default password from slurped content
 #     set_fact:
 #       nexus_default_admin_password: "{{ _slurpedpass.content | b64decode }}"
+
   - name: Jenkins Initial Password
-    shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+    shell: cat /usr/local/admin.password
     changed_when: false
     register: init_password
     set_fact:
