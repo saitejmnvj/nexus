@@ -150,21 +150,27 @@
       repo: https://github.com/haaryrichardt/nexus.git
       dest: "{{ nexus_git_repo }}"
       update: yes
-    
-  - name: Archive scripts
-    become: no
-    archive:
-     path: "{{ nexus_git_repo }}/files/groovy/update_admin_password.groovy"
-     dest: "{{ nexus_dir }}/mygroovy.tar.gz"
-     format: gz
-    run_once: true
-    
-    
-  - name: Upload new scripts
-    unarchive:
-      src: "{{ nexus_dir }}/mygroovy.tar.gz"
+  - name: Copy file 
+    copy:
+      src: "{{ nexus_git_repo }}/files/groovy/update_admin_password.groovy"
       dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
-      remote_src: yes
+      owner: nexus
+      group: nexus
+      mode: '1777'    
+#   - name: Archive scripts
+#     become: no
+#     archive:
+#      path: "{{ nexus_git_repo }}/files/groovy/update_admin_password.groovy"
+#      dest: "{{ nexus_dir }}/mygroovy.tar.gz"
+#      format: gz
+#     run_once: true
+    
+    
+#   - name: Upload new scripts
+#     unarchive:
+#       src: "{{ nexus_dir }}/mygroovy.tar.gz"
+#       dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
+#       remote_src: yes
 
   - name: Declare new or changed groovy scripts in nexus
     include_tasks: declare_script_each.yml
