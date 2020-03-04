@@ -151,7 +151,7 @@
   - name: Archive scripts
     become: no
     archive:
-     path: "{{ nexus_git_repo }}/files/groovy/*"
+     path: "{{ nexus_git_repo }}/files/groovy/update_admin_password.groovy"
      dest: "/tmp/nexus-upload-groovy-scripts.tar.gz"
     run_once: true
     delegate_to: localhost
