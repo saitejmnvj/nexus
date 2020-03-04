@@ -112,7 +112,7 @@
     
   - name: print password
     debug:
-      vars: init_password.stdout
+      var: init_password.stdout
       
   - name: Store password
     set_fact:
