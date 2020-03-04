@@ -96,14 +96,14 @@
 #       - nexus_api_head_with_defined_password.status == 401
 #       - nexus_version is version_compare('3.17.0', '>=')
 #     block:
-    - name: Slurp content of remote generated password file
-      slurp:
-        src: "{{ nexus_data_dir }}/admin.password"
-      register: _slurpedpass
+  - name: Slurp content of remote generated password file
+    slurp:
+      src: "{{ nexus_data_dir }}/admin.password"
+    register: _slurpedpass
 
-    - name: Set default password from slurped content
-      set_fact:
-        nexus_default_admin_password: "{{ _slurpedpass.content | b64decode }}"
+  - name: Set default password from slurped content
+    set_fact:
+      nexus_default_admin_password: "{{ _slurpedpass.content | b64decode }}"
 #         - name: Jenkins Initial Password
 #           shell: cat /var/lib/jenkins/secrets/initialAdminPassword
 #           changed_when: false
