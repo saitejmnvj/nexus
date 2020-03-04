@@ -116,7 +116,7 @@
  
   - name: Print Password
     debug:
-    var: nexus_default_admin_password     
+      var: nexus_default_admin_password     
 
    
   - name: Access scripts API endpoint with default admin password
