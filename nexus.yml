@@ -173,9 +173,23 @@
 #       dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
 #       remote_src: yes
 
-#   - name: Declare new or changed groovy scripts in nexus
-#     include_tasks: declare_script_each.yml
-#     with_items: "{{ nexus_groovy_files_changed.stdout_lines }}"
+  - name: Sync new scripts to old and get differences
+        shell: >
+          set -o pipefail &&
+          rsync -ric {{ nexus_data_dir }}/groovy-raw-scripts/new/ {{ nexus_data_dir }}/groovy-raw-scripts/current/
+          | cut -d" " -f 2 | sed "s/\.groovy//g"
+        register: nexus_groovy_files_changed
+        check_mode: no
+        changed_when: false
+        # simple check on changed files kept on host
+        # skip ansible lint (we don't want to use synchronize module for this)
+        args:
+          warn: false
+          executable: /bin/bash
+
+  - name: Declare new or changed groovy scripts in nexus
+    include_tasks: declare_script_each.yml
+    with_items: "{{ nexus_groovy_files_changed.stdout_lines }}"
 
   - name: Change admin password if we are still using default
     block:
