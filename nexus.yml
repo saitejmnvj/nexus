@@ -115,7 +115,7 @@
       nexus_default_admin_password: "{{ init_password.stdout }}"
   - name: Print Password
     debug:
-    msg: {{  nexus_default_admin_password }}    
+    var: nexus_default_admin_password     
  
    
   - name: Access scripts API endpoint with default admin password
