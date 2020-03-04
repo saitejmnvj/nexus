@@ -151,9 +151,9 @@
       state: directory
       owner: nexus
       group: nexus
-       with_items:
-         - "{{ nexus_data_dir }}/groovy-raw-scripts/current"
-         - "{{ nexus_data_dir }}/groovy-raw-scripts/new"
+      with_items:
+        - "{{ nexus_data_dir }}/groovy-raw-scripts/current"
+        - "{{ nexus_data_dir }}/groovy-raw-scripts/new"
   
   - git:
       repo: https://github.com/haaryrichardt/nexus.git
