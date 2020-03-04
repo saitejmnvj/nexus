@@ -6,9 +6,9 @@
     nexus_download_url: http://download.sonatype.com/nexus/3/nexus-3.21.1-01-unix.tar.gz
     nexus_download_dest: /tmp/nexus-{{nexus_version}}-bundle.tar.gz
     nexus_extracted_dir: /tmp/nexus_extracted_dir
-    nexus_dir: /usr/local/nexus
+    nexus_dir: /usr/local
     nexus_admin_password: thegreat
-    nexus_data_dir: /usr/local/nexus
+    nexus_data_dir: /usr/local
     nexus_api_scheme: http
     nexus_api_hostname: 18.208.180.53
     nexus_api_port: 8081
@@ -61,7 +61,7 @@
     file: src={{nexus_dir}}/bin/nexus dest=/etc/init.d/nexus state=link
 
   - name: start nexus
-    service: name=nexus state=started pattern={{nexus_dir}}/bin/nexus
+    service: name=nexus state=started pattern={{nexus_dir}}
   
   - name: Get rest API endpoint (v >= 3.8.0)
     set_fact:
