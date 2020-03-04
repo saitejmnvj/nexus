@@ -1,7 +1,5 @@
 ---
-- hosts: node1
-  become: true
-  tasks:
+
   - name: Calling Groovy script update_admin_password
     uri:
       url: "{{ nexus_api_scheme }}://{{ nexus_api_hostname }}:{{ nexus_api_port }}\
