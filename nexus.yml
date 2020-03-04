@@ -10,7 +10,7 @@
     nexus_admin_password: thegreat
     nexus_data_dir: /usr/local/nexus
     nexus_api_scheme: http
-    nexus_api_hostname: 18.208.180.53
+    nexus_api_hostname: 35.171.183.214
     nexus_api_port: 8081
     nexus_api_context_path: '/'
   tasks:
@@ -108,7 +108,7 @@
 #       nexus_default_admin_password: "{{ _slurpedpass.content | b64decode }}"
 
   - name: Jenkins Initial Password
-    shell: cat /usr/local/admin.password
+    shell: cat /usr/local/sonatype-work/nexus3/admin.password
     changed_when: false
     register: init_password
 
