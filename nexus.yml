@@ -26,6 +26,9 @@
   - name: install git
     yum: pkg='git' state=installed
 
+  - name: install unzip
+    yum: pkg='unzip' state=installed
+
 #   - name: create "nexus" group
 #     group: name=nexus 
     
