@@ -109,9 +109,11 @@
     shell: cat /usr/local/admin.password
     changed_when: false
     register: init_password
+    
+  - name: Store password
     set_fact:
       nexus_default_admin_password: "{{ init_password.stdout }}"
-
+   
   - name: Access scripts API endpoint with default admin password
     uri:
       url: "{{ nexus_api_scheme }}://{{ nexus_api_hostname }}:{{ nexus_api_port }}\
