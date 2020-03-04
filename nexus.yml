@@ -22,6 +22,9 @@
 
   - name: install jdk 7
     yum: pkg='java-1.8.0-openjdk' state=installed
+  
+  - name: install git
+    yum: pkg='git' state=installed
 
 #   - name: create "nexus" group
 #     group: name=nexus 
