@@ -13,6 +13,7 @@
     nexus_api_hostname: 35.171.183.214
     nexus_api_port: 8081
     nexus_api_context_path: '/'
+    nexus_default_admin_password: 6e28b524-bde7-4e31-8953-6289ebe48e5f
   tasks:
 
   - name: install wget
@@ -92,20 +93,20 @@
       path: "{{ nexus_data_dir }}/admin.password"
     register: admin_password_file
 
-  - name: Get generated admin password from file (nexus >= 3.17)
-    when:
-      - admin_password_file.stat.exists
-      - nexus_api_head_with_defined_password.status == 401
-      - nexus_version is version_compare('3.17.0', '>=')
-    block:
-      - name: Slurp content of remote generated password file
-        slurp:
-          src: /usr/local/sonatype-work/nexus3/admin.password
-        register: _slurpedpass
+#   - name: Get generated admin password from file (nexus >= 3.17)
+#     when:
+#       - admin_password_file.stat.exists
+#       - nexus_api_head_with_defined_password.status == 401
+#       - nexus_version is version_compare('3.17.0', '>=')
+#     block:
+#       - name: Slurp content of remote generated password file
+#         slurp:
+#           src: /usr/local/sonatype-work/nexus3/admin.password
+#         register: _slurpedpass
 
-      - name: Set default password from slurped content
-        set_fact:
-          nexus_default_admin_password: "{{ _slurpedpass.content | b64decode }}"
+#       - name: Set default password from slurped content
+#         set_fact:
+#           nexus_default_admin_password: "{{ _slurpedpass.content | b64decode }}"
 
 #   - name: Jenkins Initial Password
 #     shell: cat /usr/local/sonatype-work/nexus3/admin.password
