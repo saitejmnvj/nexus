@@ -173,9 +173,9 @@
 #       dest: "{{ nexus_data_dir }}/groovy-raw-scripts/new/"
 #       remote_src: yes
 
-  - name: Declare new or changed groovy scripts in nexus
-    include_tasks: declare_script_each.yml
-    with_items: "{{ nexus_groovy_files_changed.stdout_lines }}"
+#   - name: Declare new or changed groovy scripts in nexus
+#     include_tasks: declare_script_each.yml
+#     with_items: "{{ nexus_groovy_files_changed.stdout_lines }}"
 
   - name: Change admin password if we are still using default
     block:
