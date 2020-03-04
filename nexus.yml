@@ -21,44 +21,44 @@
   - name: install jdk 7
     yum: pkg='java-1.8.0-openjdk' state=installed
 
-#   - name: create "nexus" group
-#     group: name=nexus 
+  - name: create "nexus" group
+    group: name=nexus 
     
 
-#   - name: create "nexus" user
-#     user: name=nexus group=nexus 
+  - name: create "nexus" user
+    user: name=nexus group=nexus 
     
-#   - name: Unarchive a file that needs to be downloaded (added in 2.0)
-#     unarchive:
-#      src: http://download.sonatype.com/nexus/3/nexus-3.21.1-01-unix.tar.gz
-#      dest: /usr/local
-#      remote_src: yes
+  - name: Unarchive a file that needs to be downloaded (added in 2.0)
+    unarchive:
+     src: http://download.sonatype.com/nexus/3/nexus-3.21.1-01-unix.tar.gz
+     dest: /usr/local
+     remote_src: yes
     
-#   - name: make {{nexus_dir}} directory property of "nexus" user/group
-#     file: path={{nexus_dir}} group=nexus owner=nexus recurse=true
-    
-
-#   - name: make nexus runned by "nexus" user
-#     lineinfile: dest={{nexus_dir}}/bin/nexus.rc regexp="#run_as_user=" line="run_as_user=nexus" backrefs=true
+  - name: make {{nexus_dir}} directory property of "nexus" user/group
+    file: path={{nexus_dir}} group=nexus owner=nexus recurse=true
     
 
-#   - name: set NEXUS_HOME
-#     lineinfile: dest={{nexus_dir}}/bin/nexus regexp="^NEXUS_HOME" line="NEXUS_HOME={{nexus_dir}}" backrefs=true
+  - name: make nexus runned by "nexus" user
+    lineinfile: dest={{nexus_dir}}/bin/nexus.rc regexp="#run_as_user=" line="run_as_user=nexus" backrefs=true
     
 
-#   - name: create nexus piddir
-#     file: path=/var/run/nexus state=directory group=nexus owner=nexus
+  - name: set NEXUS_HOME
+    lineinfile: dest={{nexus_dir}}/bin/nexus regexp="^NEXUS_HOME" line="NEXUS_HOME={{nexus_dir}}" backrefs=true
     
 
-#   - name: set nexus pidir
-#     lineinfile: dest={{nexus_dir}}/bin/nexus regexp="^#PIDDIR=" line="PIDDIR=/var/run/nexus" backrefs=true
+  - name: create nexus piddir
+    file: path=/var/run/nexus state=directory group=nexus owner=nexus
     
-#   - name: Change file ownership, group and permissions
-#     file: path={{nexus_dir}} owner=nexus group=nexus mode='1777'
+
+  - name: set nexus pidir
+    lineinfile: dest={{nexus_dir}}/bin/nexus regexp="^#PIDDIR=" line="PIDDIR=/var/run/nexus" backrefs=true
+    
+  - name: Change file ownership, group and permissions
+    file: path={{nexus_dir}} owner=nexus group=nexus mode='1777'
    
 
-#   - name: create symbolic links to /etc/init.d/nexus
-#     file: src={{nexus_dir}}/bin/nexus dest=/etc/init.d/nexus state=link
+  - name: create symbolic links to /etc/init.d/nexus
+    file: src={{nexus_dir}}/bin/nexus dest=/etc/init.d/nexus state=link
 
   - name: start nexus
     service: name=nexus state=started pattern={{nexus_dir}}
