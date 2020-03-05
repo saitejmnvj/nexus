@@ -52,11 +52,11 @@
       mode: '1777'
       remote_src: true
  
- - name: Removing Nexus-3.21.1-01
-   file:
-    path: /usr/local/nexus-3.21.1-01
-    state: absent
-    remote_src: true
+  - name: Removing Nexus-3.21.1-01
+    file:
+      path: /usr/local/nexus-3.21.1-01
+      state: absent
+      remote_src: true
 
   - name: make nexus runned by "nexus" user
     lineinfile: dest={{nexus_dir}}/bin/nexus.rc regexp="#run_as_user=" line="run_as_user=nexus" backrefs=true
