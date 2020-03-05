@@ -45,11 +45,15 @@
   - name: make {{nexus_dir}} directory property of "nexus" user/group
     file: path={{nexus_dir}} group=nexus owner=nexus recurse=true
     
-  - name: Change Nexus Directory Name
-    become: yes
-    shell:
-      cmd: mv nexus-3.21.1-01 nexus   
-    
+  - name: Copying Directory of Nexus-3.21.1-01 to nexus
+    copy:
+      src: /usr/local/nexus-3.21.1-01
+      dest: /usr/local/nexus 
+      mode: '1777'
+  - name: Removing Nexus-3.21.1-01
+    file:
+      path: /usr/local/nexus-3.21.1-01
+      state: absent
 
   - name: make nexus runned by "nexus" user
     lineinfile: dest={{nexus_dir}}/bin/nexus.rc regexp="#run_as_user=" line="run_as_user=nexus" backrefs=true
