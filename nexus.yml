@@ -6,9 +6,9 @@
     nexus_download_url: http://download.sonatype.com/nexus/3/nexus-3.21.1-01-unix.tar.gz
     nexus_download_dest: /tmp/nexus-{{nexus_version}}-bundle.tar.gz
     nexus_extracted_dir: /tmp/nexus_extracted_dir
-    nexus_dir: /usr/local/nexus
+    nexus_dir: /usr/local/nexus/nexus-3.21.1-01
     nexus_admin_password: thegreat
-    nexus_data_dir: /usr/local/nexus
+    nexus_data_dir: /usr/local/nexus/nexus-3.21.1-01
     nexus_api_scheme: http
     nexus_api_hostname: 3.134.243.240
     nexus_api_port: 8081
