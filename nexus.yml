@@ -48,7 +48,7 @@
   - name: Change Nexus Directory Name
     become: yes
     shell:
-      cmd: mv nexus-3.21.101 nexus   
+      cmd: mv nexus-3.21.1-01 nexus   
     
 
   - name: make nexus runned by "nexus" user
