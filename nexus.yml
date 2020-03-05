@@ -10,7 +10,7 @@
     nexus_admin_password: thegreat
     nexus_data_dir: /usr/local/nexus
     nexus_api_scheme: http
-    nexus_api_hostname: 35.171.183.214
+    nexus_api_hostname: 3.134.243.240
     nexus_api_port: 8081
     nexus_api_context_path: '/'
     nexus_default_admin_password: 6e28b524-bde7-4e31-8953-6289ebe48e5f
